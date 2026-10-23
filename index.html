@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="description" content="关于 PCL2 游戏本体下载入口调整及开发者遭遇网络攻击的玩家社论。支持理性沟通，反对恶意攻击。">
+  <title>请让技术回归技术，让理性守住底线｜PCL2 玩家公开信</title>
+  <style>
+    :root {
+      --paper: #f7f6f2;
+      --surface: #fffefa;
+      --ink: #202a32;
+      --muted: #68727a;
+      --line: #dedfd8;
+      --accent: #2c6257;
+      --accent-dark: #214b43;
+      --accent-soft: #e7efe9;
+      --gold: #bd8a45;
+      --max: 900px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent-dark); }
+    .topline { height: 5px; background: var(--accent); }
+    .nav {
+      max-width: 1120px; margin: 0 auto; padding: 22px 28px;
+      display: flex; justify-content: space-between; align-items: center; gap: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 750; letter-spacing: .12em; }
+    .brand-mark { width: 31px; height: 31px; display: grid; place-items: center; background: var(--accent); color: white; border-radius: 8px; font-size: 12px; letter-spacing: 0; }
+    .nav-note { color: var(--muted); font-size: 12px; letter-spacing: .04em; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .hero { padding: 76px 0 49px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent-dark); text-transform: uppercase; letter-spacing: .14em; font-size: 11px; font-weight: 800; }
+    .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--gold); display: inline-block; }
+    h1 { max-width: 820px; margin: 21px 0 16px; font-family: Georgia, "Songti SC", "STSong", "SimSun", serif; font-size: clamp(35px, 5.5vw, 59px); line-height: 1.23; letter-spacing: -.045em; font-weight: 750; }
+    .subtitle { margin: 0; max-width: 760px; color: #58636a; font-family: Georgia, "Songti SC", "STSong", "SimSun", serif; font-size: clamp(17px, 2.4vw, 21px); line-height: 1.8; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 27px; padding-top: 19px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .meta strong { color: var(--ink); font-weight: 650; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+    .button { display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-height: 48px; padding: 11px 20px; border: 1px solid var(--accent); border-radius: 4px; background: var(--accent); color: white; text-decoration: none; font-weight: 700; font-size: 14px; transition: background .18s ease, transform .18s ease; }
+    .button:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .button.secondary { color: var(--accent-dark); background: transparent; border-color: #bcc9c2; }
+    .button.secondary:hover { background: var(--accent-soft); }
+    .statement { background: var(--surface); border: 1px solid var(--line); border-radius: 7px; padding: clamp(25px, 5vw, 58px); box-shadow: 0 14px 36px rgba(31, 42, 50, .035); }
+    .statement-head { padding-bottom: 24px; margin-bottom: 25px; border-bottom: 1px solid var(--line); }
+    .statement-head h2 { margin: 0; font-family: Georgia, "Songti SC", "STSong", "SimSun", serif; font-size: 25px; line-height: 1.5; }
+    .statement-head p { margin: 7px 0 0; font-size: 13px; color: var(--muted); }
+    .prose p { margin: 0 0 1.28em; font-size: 16px; line-height: 2.05; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: #213f37; font-weight: 750; }
+    .closing { margin-top: 34px; padding: 25px 24px; background: var(--accent-soft); border-left: 3px solid var(--accent); }
+    .closing p { margin: 0; font-family: Georgia, "Songti SC", "STSong", "SimSun", serif; font-size: clamp(19px, 2.7vw, 25px); line-height: 1.8; font-weight: 700; color: #244a41; }
+    .signature { margin-top: 15px; text-align: right; color: var(--muted); font-size: 13px; }
+    .petition { margin: 37px 0 66px; padding: 28px 30px; display: flex; justify-content: space-between; align-items: center; gap: 22px; border: 1px solid #cdd8d0; border-radius: 7px; background: #f0f4ef; }
+    .petition h2 { margin: 0 0 4px; font-size: 20px; line-height: 1.5; }
+    .petition p { margin: 0; color: #626e69; font-size: 13px; line-height: 1.8; }
+    .petition .button { flex: 0 0 auto; white-space: nowrap; }
+    .notice { margin-top: -37px; padding: 0 0 49px; color: var(--muted); font-size: 12px; line-height: 1.9; }
+    footer { border-top: 1px solid var(--line); padding: 23px 28px 26px; color: var(--muted); font-size: 11px; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
+    .footer-note { max-width: 650px; }
+    .copyright { text-align: right; white-space: nowrap; }
+    @media (max-width: 640px) {
+      .nav { padding: 16px 20px; }
+      .nav-note { display: none; }
+      .hero { padding-top: 54px; }
+      .meta { flex-direction: column; gap: 6px; }
+      .statement { padding: 25px 22px; }
+      .prose p { font-size: 15px; line-height: 2; }
+      .petition { padding: 23px 21px; flex-direction: column; align-items: stretch; }
+      .petition .button { width: 100%; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .copyright { width: 100%; text-align: right; white-space: normal; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button { transition: none; } }
+  </style>
+</head>
+<body>
+  <div class="topline" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="brand"><span class="brand-mark">P2</span><span>PCL2 PLAYER STATEMENT</span></div>
+    <div class="nav-note">玩家意见 · 理性沟通 · 反对恶意攻击</div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="eyebrow">A COMMUNITY OPEN LETTER</div>
+      <h1 id="page-title">请让技术回归技术，<br>让理性守住底线</h1>
+      <p class="subtitle">关于 PCL2 游戏本体下载入口调整及开发者遭遇网络攻击的玩家社论</p>
+      <div class="meta">
+        <span>公开信日期：<strong>2026 年 10 月 24 日</strong></span>
+        <span>计划发布时间：<strong>中午 12:00（北京时间，UTC+8）</strong></span>
+      </div>
+      <div class="actions">
+        <a class="button" href="https://docs.qq.com/form/page/DRWtPT0NsVWFFWVpP" target="_blank" rel="noopener noreferrer">参与玩家联署 <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href="#statement">阅读完整公开信 <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <article class="statement" id="statement">
+      <header class="statement-head">
+        <h2>致 PCL2 开发者与 Minecraft 玩家社区</h2>
+        <p>一份关于沟通、开发者权益与玩家诉求的公开社论</p>
+      </header>
+      <div class="prose">
+        <p>近日，Minecraft 启动器 PCL2 的游戏本体下载入口调整，引起了不少玩家的关注与讨论。对于长期使用 PCL2 的玩家而言，这不仅仅是一次下载方式的变化，也关系到他们多年来形成的使用习惯，以及这个陪伴许多玩家走过 Minecraft 时光的项目未来将如何发展。</p>
+        <p>PCL2 的价值，不只是一个启动器本身。它帮助玩家管理游戏版本、安装游戏环境、配置模组，让 Minecraft 的游玩体验更加便捷。对于不少玩家来说，它早已成为进入方块世界的重要工具。正因如此，当熟悉的下载方式发生变化时，玩家感到不解、失落，乃至希望开发者进一步说明情况，都是可以理解的。</p>
+        <p>我们希望强调：<strong>玩家有表达意见的权利，开发者也有作出技术决策、维护项目和保护自身权益的权利。</strong>二者并不矛盾。真正值得追求的，不是让任何一方在舆论压力下被迫屈服，而是在充分沟通的基础上，寻找兼顾规则、开发者权益与玩家实际需求的解决方案。</p>
+        <p>更令人担忧的是，2026 年 10 月 23 日，据龙腾猫跃本人发帖表示，其服务器遭到了多次、不同流量规模的大规模攻击，其 GitHub 账号也疑似遭到攻击，出现无法访问的情况。</p>
+        <p>关于这些事件的具体技术原因、攻击来源与责任主体，目前仍有待进一步核实。我们不应在调查结果尚未明确时，便贸然认定攻击者是谁，也不应将其与此次下载入口调整直接关联。但有一点必须明确：<strong>无论一个开发者作出的决定是否符合所有玩家的期待，针对其服务器或账号实施恶意网络攻击，都不能成为正常表达意见的方式。</strong></p>
+        <p>如果相关攻击确实是恶意行为，那么它损害的绝不仅仅是开发者个人的利益。服务器遭受攻击，可能影响正常服务；开发者账号出现异常，则可能妨碍项目的维护、更新与社区协作。最终承担后果的，也可能包括那些并未参与任何争论、只是希望正常使用启动器的普通玩家。</p>
+        <p>我们支持公开讨论，也支持对项目决策提出有依据的批评。但批评不意味着骚扰，质疑不意味着威胁，意见不同更不意味着任何人可以随意破坏他人的数字资产。网络空间并不是法外之地，技术能力也不应沦为伤害他人的工具。</p>
+        <p>与此同时，我们也希望，围绕下载入口调整的讨论不要被攻击事件本身完全掩盖。玩家真正关心的问题依然值得得到回应：此次调整究竟出于哪些实际考虑？未来是否可能在合法合规的前提下，探索更加方便的游戏本体获取方式？如果原有方案确实无法继续使用，是否存在其他能够兼顾项目可持续维护与玩家体验的替代路径？</p>
+        <p>我们理解，独立开发者维护一个长期运行的软件项目并不容易。技术维护、安全防护、服务器成本、合规要求以及持续更新，都可能成为项目发展过程中必须面对的现实问题。玩家未必了解每一项决策背后的技术细节，开发者也未必能够满足所有人的期待。然而，正因为双方掌握的信息并不完全相同，清晰、克制而坦诚的沟通才更加重要。</p>
+        <p>我们希望开发者能够在条件允许的情况下，对此次调整及后续安排作出适当说明；也希望玩家能够给予开发者合理的理解与空间，让讨论回到具体问题本身，而不是演变为相互指责。</p>
+        <p>基于这些考虑，我们发起本次玩家联署。联署并非要求开发者无条件恢复某一功能，更不是对任何未经证实的说法作出背书。我们希望汇集真实、自愿的玩家意见，表达对 PCL2 项目的关注与支持，并呼吁在合法合规的范围内，继续探索更加合理、便利且可持续的解决方案。</p>
+        <p>我们同样郑重反对人身攻击、网络骚扰、恶意猜测、恶意攻击以及传播未经证实的信息。请不要因为立场相近，就把猜测当成事实；也不要因为意见不同，就否定他人表达诉求的权利。任何涉及网络攻击的指控，都应当尽可能依据可靠证据进行判断，并通过适当渠道处理。</p>
+        <p>我们所支持的，不应只是某一个功能，也不应只是某一个人，而是一种值得珍惜的社区环境：开发者能够安心维护项目，玩家能够理性表达需求，技术问题能够通过技术与沟通解决，而不是被恶意行为和无休止的争吵所支配。</p>
+        <p>Minecraft 的世界之所以吸引人，不只是因为那些方块能够被自由组合，更因为玩家能够在其中创造、探索与合作。我们也希望，围绕这款游戏及其社区工具所发生的现实争议，能够体现同样的创造精神与合作态度。</p>
+        <p><strong>请尊重开发者，也请尊重玩家。请支持理性沟通，反对恶意攻击。请让技术回归技术，让问题回到问题本身。</strong></p>
+        <p>我们期待 PCL2 未来能够找到更加稳妥的发展道路，也期待这场讨论最终带来的不是更深的对立，而是更充分的理解、更清晰的信息，以及一个对开发者和玩家都更加友好的社区环境。</p>
+        <p>本社论及联署所表达的，是参与者自愿提出的意见与诉求，不代表所有 Minecraft 玩家，也不代表 PCL2 开发者的官方立场。</p>
+      </div>
+      <div class="closing"><p>我们绝不投降！<br>不向恶意攻击与非理性对立低头，坚持以公开、理性、合法的方式表达诉求。</p></div>
+      <div class="signature">—— Minecraft 玩家联署参与者</div>
+    </article>
+
+    <section class="petition" aria-label="玩家联署入口">
+      <div>
+        <h2>把你的意见，写进这份联署</h2>
+        <p>请在自愿、真实、理性的前提下参与。联署不代表所有玩家，也不替代事实核实。</p>
+      </div>
+      <a class="button" href="https://docs.qq.com/form/page/DRWtPT0NsVWFFWVpP" target="_blank" rel="noopener noreferrer">打开联署表单 <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <div class="notice">说明：本文关于网络攻击及账号异常的表述，是对相关发帖内容的转述；具体技术原因、攻击来源与责任主体尚待进一步核实。本文不代表 PCL2 开发者的官方立场。</div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-note">以事实为依据，以理性为方法。尊重开发者的权益，也尊重玩家表达诉求的权利。</div>
+      <div class="copyright">Arthur Wang All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
